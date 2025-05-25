@@ -64,19 +64,19 @@ const SocialMediaFeed = () => {
 
   const getSentimentColor = (sentiment: string) => {
     switch (sentiment) {
-      case 'positive': return 'text-green-400 bg-green-400/20';
-      case 'negative': return 'text-red-400 bg-red-400/20';
-      case 'neutral': return 'text-yellow-400 bg-yellow-400/20';
-      default: return 'text-gray-400 bg-gray-400/20';
+      case 'positive': return 'text-green-700 bg-green-100';
+      case 'negative': return 'text-red-700 bg-red-100';
+      case 'neutral': return 'text-yellow-700 bg-yellow-100';
+      default: return 'text-gray-700 bg-gray-100';
     }
   };
 
   const getImpactColor = (impact: string) => {
     switch (impact) {
-      case 'high': return 'text-red-400 bg-red-400/20';
-      case 'medium': return 'text-yellow-400 bg-yellow-400/20';
-      case 'low': return 'text-green-400 bg-green-400/20';
-      default: return 'text-gray-400 bg-gray-400/20';
+      case 'high': return 'text-red-700 bg-red-100';
+      case 'medium': return 'text-yellow-700 bg-yellow-100';
+      case 'low': return 'text-green-700 bg-green-100';
+      default: return 'text-gray-700 bg-gray-100';
     }
   };
 
@@ -101,27 +101,27 @@ const SocialMediaFeed = () => {
   return (
     <div className="space-y-6">
       {/* Trending Topics */}
-      <Card className="bg-slate-800/50 border-slate-700">
+      <Card className="bg-white border-gray-200 shadow-sm">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-white">
-            <TrendingUp className="text-purple-400" size={24} />
+          <CardTitle className="flex items-center gap-2 text-gray-900">
+            <TrendingUp className="text-purple-600" size={24} />
             Trending Traffic Topics
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
             {trendingTopics.map((topic, index) => (
-              <div key={index} className="bg-slate-700/50 rounded-lg p-3">
+              <div key={index} className="bg-gray-50 rounded-lg p-3 border border-gray-200">
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-blue-400 font-semibold text-sm">{topic.topic}</span>
+                  <span className="text-blue-600 font-semibold text-sm">{topic.topic}</span>
                   <span className={`text-xs ${
-                    topic.trend === 'up' ? 'text-green-400' : 
-                    topic.trend === 'down' ? 'text-red-400' : 'text-gray-400'
+                    topic.trend === 'up' ? 'text-green-600' : 
+                    topic.trend === 'down' ? 'text-red-600' : 'text-gray-500'
                   }`}>
                     {topic.trend === 'up' ? '↗' : topic.trend === 'down' ? '↘' : '→'}
                   </span>
                 </div>
-                <p className="text-slate-300 text-sm">{topic.mentions} mentions</p>
+                <p className="text-gray-600 text-sm">{topic.mentions} mentions</p>
               </div>
             ))}
           </div>
@@ -129,26 +129,26 @@ const SocialMediaFeed = () => {
       </Card>
 
       {/* Social Media Feed */}
-      <Card className="bg-slate-800/50 border-slate-700">
+      <Card className="bg-white border-gray-200 shadow-sm">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-white">
-            <MessageSquare className="text-blue-400" size={24} />
+          <CardTitle className="flex items-center gap-2 text-gray-900">
+            <MessageSquare className="text-blue-600" size={24} />
             Live Social Media Feed
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4 max-h-96 overflow-y-auto">
             {posts.map((post) => (
-              <div key={post.id} className="bg-slate-700/30 rounded-lg p-4 border border-slate-600">
+              <div key={post.id} className="bg-gray-50 rounded-lg p-4 border border-gray-200">
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center gap-3">
                     <span className="text-2xl">{getPlatformIcon(post.platform)}</span>
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="text-white font-semibold">{post.user}</span>
-                        {post.verified && <span className="text-blue-400">✓</span>}
+                        <span className="text-gray-900 font-semibold">{post.user}</span>
+                        {post.verified && <span className="text-blue-600">✓</span>}
                       </div>
-                      <span className="text-slate-400 text-sm">{post.time}</span>
+                      <span className="text-gray-500 text-sm">{post.time}</span>
                     </div>
                   </div>
                   <div className="flex gap-2">
@@ -161,9 +161,9 @@ const SocialMediaFeed = () => {
                   </div>
                 </div>
                 
-                <p className="text-slate-300 mb-3">{post.content}</p>
+                <p className="text-gray-700 mb-3">{post.content}</p>
                 
-                <div className="flex items-center gap-6 text-slate-400 text-sm">
+                <div className="flex items-center gap-6 text-gray-500 text-sm">
                   <div className="flex items-center gap-1">
                     <ThumbsUp size={14} />
                     <span>{post.engagement.likes}</span>
@@ -184,29 +184,29 @@ const SocialMediaFeed = () => {
       </Card>
 
       {/* Sentiment Analysis Summary */}
-      <Card className="bg-slate-800/50 border-slate-700">
+      <Card className="bg-white border-gray-200 shadow-sm">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-white">
-            <AlertCircle className="text-orange-400" size={24} />
+          <CardTitle className="flex items-center gap-2 text-gray-900">
+            <AlertCircle className="text-orange-600" size={24} />
             Sentiment Analysis Summary
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-3 gap-4">
             <div className="text-center">
-              <div className="text-3xl font-bold text-red-400">32%</div>
-              <div className="text-slate-400">Negative</div>
-              <div className="text-xs text-slate-500">Traffic complaints</div>
+              <div className="text-3xl font-bold text-red-600">32%</div>
+              <div className="text-gray-600">Negative</div>
+              <div className="text-xs text-gray-500">Traffic complaints</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-yellow-400">45%</div>
-              <div className="text-slate-400">Neutral</div>
-              <div className="text-xs text-slate-500">General updates</div>
+              <div className="text-3xl font-bold text-yellow-600">45%</div>
+              <div className="text-gray-600">Neutral</div>
+              <div className="text-xs text-gray-500">General updates</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-green-400">23%</div>
-              <div className="text-slate-400">Positive</div>
-              <div className="text-xs text-slate-500">Clear roads</div>
+              <div className="text-3xl font-bold text-green-600">23%</div>
+              <div className="text-gray-600">Positive</div>
+              <div className="text-xs text-gray-500">Clear roads</div>
             </div>
           </div>
         </CardContent>
